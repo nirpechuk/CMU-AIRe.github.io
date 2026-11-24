@@ -36,32 +36,65 @@ MEMBERS = [
      "https://apga.github.io/", "people/apurva-gandhi.jpg"),
     ("PhD students", "Zheyuan Hu", "PhD in Robotics", "Scaling robot foundation models.",
      "https://huzheyuan.io/", "zheyuan.jpg"),
+    ("PhD students", "Nathan S. de Lara", "PhD in Machine Learning", "Off-policy learning.",
+     "https://delara38.github.io/", "people/nathan-s-de-lara.jpg"),
     ("PhD students", "Max Sobol Mark", "PhD in Computer Science", "Reinforcement learning with and for pre-trained policies and large datasets.",
      "https://maxsobolmark.com/", "max.jpg"),
     ("PhD students", "Yuxiao Qu", "PhD in Machine Learning", "The intersection of reinforcement learning and foundation models.",
-     "https://cohenqu.github.io/", "yuxiao.jpg"),
+     "https://cohenqu.github.io/", "people/yuxiao-qu.jpg"),
+    ("PhD students", "Ian Wu", "PhD in Machine Learning", "Making LLMs smarter and better at learning.",
+     "https://ianyhwu.github.io/", "people/ian-wu.jpg"),
+    ("PhD students", "Lehong Wu", "PhD in Machine Learning", "Robot foundation models and reinforcement learning.",
+     "https://lehongwu.github.io/", "people/lehong-wu.jpg"),
     ("Master's and undergraduate students", "Shashwat Chandra", "MS in Machine Learning",
      "Reinforcement learning on open-ended tasks, post-training and interpretability.",
      "https://shashwatchandra.com/", "people/shashwat-chandra.jpg"),
     ("Master's and undergraduate students", "Saksham Singh", "MS in Machine Learning",
      "Autonomous RL in the real world for long-horizon manipulation tasks, and pre-training recipes for generalist robot policies.",
      "https://github.com/saksham002", "people/saksham-singh.jpg"),
+    ("Master's and undergraduate students", "Khush Agrawal", "MS in Robotics", "Machine learning and robotics.",
+     "https://khush3.github.io/", "khush.jpg"),
+    ("Master's and undergraduate students", "Kshitiz", "MS in Robotics",
+     "Reinforcement learning, robotic manipulation and autonomous self-improvement.",
+     "https://kshitiz-1225.github.io/", "people/kshitiz.jpg"),
     ("Master's and undergraduate students", "Sreyas Venkataraman", "MS in Robotics",
      "Exploration, new architectures and training foundation models.",
      "https://vsreyas.github.io/", "people/sreyas-venkataraman.jpg"),
-    ("Master's and undergraduate students", "Khush Agrawal", "MS in Robotics", "Machine learning and robotics.",
-     "https://khush3.github.io/", "khush.jpg"),
+    ("Master's and undergraduate students", "Philip Han", "Undergraduate researcher", "Robot learning and machine learning.",
+     "https://yangphiliphan.com/", "people/philip-han.jpg"),
+    ("Master's and undergraduate students", "Jojo Li", "Undergraduate researcher", "Robot learning for long-horizon manipulation tasks.",
+     "https://www.linkedin.com/in/jojoli0430/", "people/jojo-li.jpg"),
     ("Master's and undergraduate students", "Nir Pechuk", "BS in Computer Science",
-     "Robust, data-efficient and exploratory reinforcement learning, especially in robotics.",
+     "Generalizing, data-efficient and exploratory reinforcement learning, especially in robotics.",
      "https://nirpechuk.github.io/", "people/nir-pechuk.jpg"),
+    ("Master's and undergraduate students", "Robyn Wu", "Undergraduate researcher", "Robot learning.",
+     "https://www.linkedin.com/in/robynwuprofile/", "people/robyn-wu.jpg"),
+    ("Master's and undergraduate students", "Gene Yang", "Undergraduate researcher", "How models can do research.",
+     "https://3n3g.github.io/", "people/gene-yang.jpg"),
+    ("Master's and undergraduate students", "Jeff Yu", "BS in Computer Science", "Teaching robots to do cool tasks.",
+     "https://github.com/A-Speedy-Giraffe", "people/jeff-yu.jpg"),
     ("Master's and undergraduate students", "Ivan Zhang", "BS in Computer Science",
      "Natural language and simulation-based methods for robot manipulation.",
      "https://enspikondplusplus.github.io/", "people/ivan-zhang.jpg"),
-    ("Affiliated researchers", "Taeyoun Kim", "PhD at NYU", "",
+    ("Affiliated researchers", "Vansh Kapoor", "Research assistant",
+     "Principled algorithms for RL and generative modeling, with applications to foundation model reasoning, post-training and robotics.",
+     "https://vansh28kapoor.github.io/", "people/vansh-kapoor.jpg"),
+    ("Affiliated researchers", "Taeyoun Kim", "PhD at NYU",
+     "Using RL to understand model capability and complexity, and to optimize model training.",
      "https://danielkty.github.io/", "people/taeyoun-kim.jpg"),
+    ("Affiliated researchers", "Qixin Xu", "Visiting researcher", "Continual learning and agentic RL.",
+     "https://scholar.google.com/citations?user=AvbV0HcAAAAJ", "people/qixin-xu.jpg"),
+    ("Alumni", "Hao Bai", "PhD at UIUC", "",
+     "https://biechi.github.io/", "people/hao-bai.jpg"),
     ("Alumni", "Matthew Y.R. Yang", "PhD at MIT", "",
      "https://www.matthewyryang.com/", "matthew.jpg"),
 ]
+
+# Other spellings of members' names used in paper author lists, so their papers link to them.
+MEMBER_SPELLINGS = {
+    "Matthew Y. R. Yang": "Matthew Y.R. Yang",
+    "Jeffrey Yu": "Jeff Yu",
+}
 
 COLLABORATORS = [  # (name, affiliation, homepage, other spellings used in author lists)
     ("Amrith Setlur", "PhD student at CMU", "https://scholar.google.com/citations?user=i7V1kJgAAAAJ&hl=en", []),
@@ -71,7 +104,6 @@ COLLABORATORS = [  # (name, affiliation, homepage, other spellings used in autho
     ("Anikait Singh", "PhD student at Stanford", "https://asap7772.github.io/", []),
     ("Seohong Park", "PhD student at UC Berkeley", "https://seohong.me/", []),
     ("Lunjun Zhang", "PhD student at University of Toronto", "https://lunjunzhang.github.io/", []),
-    ("Hao Bai", "MS student at UIUC", "https://biechi.github.io/", []),
     ("Katie Kang", "PhD student at UC Berkeley", "http://katiekang.com/", []),
     ("Oleh Rybkin", "Postdoctoral scholar at UC Berkeley", "https://people.eecs.berkeley.edu/~oleh/", []),
     ("Paul Zhou", "PhD student at UC Berkeley", "https://zhouzypaul.github.io/", ["Zhiyuan Zhou"]),
@@ -142,7 +174,8 @@ for _, name, *_ in MEMBERS:
 def member_photo(file):
     """The photo's path under media/, or None while it has not been added yet."""
     return file if file and (OUT / "media" / file).exists() else None
-PERSON_ID["Matthew Y. R. Yang"] = slug("Matthew Y.R. Yang")  # spelling used in author lists
+for spelling, name in MEMBER_SPELLINGS.items():
+    PERSON_ID[spelling] = slug(name)
 for name, _, _, other in COLLABORATORS:
     for spelling in [name, *other]:
         PERSON_ID[spelling] = slug(name)
