@@ -23,7 +23,8 @@ META = HERE / "papers"
 
 # ---------------------------------------------------------------- people
 
-# Lab members, in the order shown: (group, name, role, research interests, homepage, photo).
+# Lab members: (group, name, role, research interests, homepage, photo). Groups are shown in the
+# order they first appear here; within a group, people are sorted by first name when the site is built.
 # A photo is a file in media/; until it exists the person gets a plain tile.
 MEMBERS = [
     ("Faculty", "Aviral Kumar", "Assistant Professor, Computer Science and Machine Learning", "",
@@ -112,6 +113,11 @@ COLLABORATORS = [  # (name, affiliation, homepage, other spellings used in autho
     ("Rishabh Agarwal", "Research Scientist at Google DeepMind", "https://agarwl.github.io/", []),
     ("William Chen", "PhD student at UC Berkeley", "https://verityw.github.io/", []),
 ]
+
+# Within each group, and among collaborators, list people alphabetically by first name.
+GROUP_ORDER = list(dict.fromkeys(m[0] for m in MEMBERS))
+MEMBERS.sort(key=lambda m: (GROUP_ORDER.index(m[0]), m[1].casefold()))
+COLLABORATORS.sort(key=lambda c: c[0].casefold())
 
 # The live Q-learning gridworld on the home page, shown under the news when enabled. Hidden for now; gridworld.js is kept.
 SHOW_GRIDWORLD = False
