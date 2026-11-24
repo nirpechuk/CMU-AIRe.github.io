@@ -94,6 +94,7 @@ MEMBERS = [
 MEMBER_SPELLINGS = {
     "Matthew Y. R. Yang": "Matthew Y.R. Yang",
     "Jeffrey Yu": "Jeff Yu",
+    "Jasmine Li": "Jojo Li",
 }
 
 COLLABORATORS = [  # (name, affiliation, homepage, other spellings used in author lists)
